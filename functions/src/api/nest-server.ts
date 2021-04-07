@@ -3,7 +3,7 @@ import * as cors from 'cors';
 
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import { AppModule } from '../api/app.module';
+import { AppModule } from '../api/app/app.module';
 
 export const nestServer: express.Express = express();
 

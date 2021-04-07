@@ -1,0 +1,38 @@
+[debug] [2021-04-06T19:29:31.459Z] ----------------------------------------------------------------------
+[debug] [2021-04-06T19:29:31.461Z] Command:       /usr/local/bin/firebase /home/william/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase serve --only functions
+[debug] [2021-04-06T19:29:31.461Z] CLI Version:   9.8.0
+[debug] [2021-04-06T19:29:31.461Z] Platform:      linux
+[debug] [2021-04-06T19:29:31.461Z] Node Version:  v12.2.0
+[debug] [2021-04-06T19:29:31.461Z] Time:          Tue Apr 06 2021 16:29:31 GMT-0300 (Brasilia Standard Time)
+[debug] [2021-04-06T19:29:31.461Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-06T19:29:31.467Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-06T19:29:31.467Z] > authorizing via signed-in user
+[debug] [2021-04-06T19:29:31.467Z] [iam] checking project poc-firestore-86b52 for permissions ["firebase.projects.get"]
+[debug] [2021-04-06T19:29:31.469Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-04-06T19:29:31.470Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-06T19:29:31.706Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Tue, 06 Apr 2021 19:29:31 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-06T19:29:31.779Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/poc-firestore-86b52:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-04-06T19:29:32.741Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 06 Apr 2021 19:29:32 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=728","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-06T19:29:32.750Z] > refreshing access token with scopes: []
+[debug] [2021-04-06T19:29:32.751Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-06T19:29:32.931Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Tue, 06 Apr 2021 19:29:32 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-06T19:29:32.979Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/poc-firestore-86b52 [none]
+[debug] [2021-04-06T19:29:33.368Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/poc-firestore-86b52 200
+[debug] [2021-04-06T19:29:33.369Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/poc-firestore-86b52 {"projectId":"poc-firestore-86b52","projectNumber":"195788287420","displayName":"poc-firestore","name":"projects/poc-firestore-86b52","resources":{"hostingSite":"poc-firestore-86b52","storageBucket":"poc-firestore-86b52.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[debug] [2021-04-06T19:29:33.553Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received type undefined
+    at validateString (internal/validators.js:107:11)
+    at Object.join (path.js:1037:7)
+    at FunctionsServer.start (/home/william/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/serve/functions.js:20:35)
+    at /home/william/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/serve/index.js:15:36
+    at arrayMap (/home/william/.cache/firebase/tools/lib/node_modules/lodash/lodash.js:653:23)
+    at Function.map (/home/william/.cache/firebase/tools/lib/node_modules/lodash/lodash.js:9622:14)
+    at serve (/home/william/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/serve/index.js:14:25)
+    at Command.actionFn (/home/william/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/commands/serve.js:47:16)
+    at /home/william/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/command.js:163:25
+    at processTicksAndRejections (internal/process/task_queues.js:89:5)
+[error] 
+[error] Error: An unexpected error has occurred.
