@@ -6,10 +6,8 @@ import { Producer } from 'sqs-producer';
 @Injectable()
 export class ManagerProducerService {
   private logger = new Logger(ManagerProducerService.name);
-  constructor(
-    private readonly configService: ConfigService,
-    private readonly producer: Producer,
-  ) {
+  private producer: Producer;
+  constructor(private readonly configService: ConfigService) {
     this.producer = Producer.create({
       queueUrl: this.configService.get('MANAGER_PRODUCER_SQL'),
       sqs: new SQS({
