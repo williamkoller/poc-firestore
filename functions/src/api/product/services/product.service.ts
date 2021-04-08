@@ -3,6 +3,7 @@ import { database, productCollection } from '../database/product.database';
 import { AddProductDto } from '../dtos/add-product.dto';
 import { Product } from '../interface/product.interface';
 import { v4 } from 'uuid';
+import { UpdateProductDto } from '../dtos/update-product.dto';
 
 @Injectable()
 export class ProductService {
@@ -20,5 +21,12 @@ export class ProductService {
       });
 
     return result;
+  }
+
+  async update(id: string, updateProdutDto: UpdateProductDto): Promise<any> {
+    await database
+      .collection(productCollection)
+      .doc(id)
+      .set(updateProdutDto, { merge: true });
   }
 }
