@@ -12,7 +12,13 @@ export class ProductService {
       name: addProductDto.name,
       description: addProductDto.description,
     };
-    const result = await database.collection(productCollection).add(product);
+    const result = (await database.collection(productCollection).add(product))
+      .get()
+      .then((snapShot) => {
+        const data = snapShot.data();
+        return data;
+      });
+
     return result;
   }
 }
