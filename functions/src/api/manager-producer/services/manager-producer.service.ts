@@ -2,6 +2,17 @@ import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { config, SQS } from 'aws-sdk';
 import { Producer } from 'sqs-producer';
+import { onProductUpdate } from '../../../index';
+import { Message } from 'sqs-producer/dist/types';
+import { v4 } from 'uuid';
+
+if (process.env.MODE === 'DEVELOP') {
+  config.update({
+    region: process.env.AWS_REGION,
+    accessKeyId: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  });
+}
 
 @Injectable()
 export class ManagerProducerService {
@@ -18,17 +29,21 @@ export class ManagerProducerService {
     });
   }
   async produce(): Promise<void> {
-    if (this.configService.get('MODE') === 'DEVELOP') {
-      config.update({
-        region: this.configService.get('AWS_REGION'),
-        accessKeyId: this.configService.get('AWS_ACCESS_KEY'),
-        secretAccessKey: this.configService.get('AWS_SECRET_ACCESS_KEY'),
-      });
-    }
+    const productIsObject = onProductUpdate;
+    const productIsArray = Object.keys(productIsObject);
+
+    const messages: Message[] = productIsArray.map((item) => ({
+      id: v4(),
+      body: JSON.stringify(item),
+    }));
+
+    this.logger.log(messages.length);
     try {
-      await this.producer.send('');
+      await this.producer.send(messages);
     } catch (e) {
       throw new Error(e.message);
     }
+    const size = await this.producer.queueSize();
+    this.logger.log(`There are ${size} messages on the queue.`);
   }
 }

@@ -41,5 +41,4 @@ export const onProductUpdate = functions.firestore
 
       await Promise.all(updatePromises);
     }
-    return 0;
   });
