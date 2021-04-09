@@ -18,7 +18,7 @@ export const onProductCreate = functions.firestore
 
 export const onProductUpdate = functions.firestore
   .document('products/{productId}')
-  .onUpdate(async (snap, context) => {
+  .onUpdate(async (snap) => {
     const newValues = snap.after.data();
 
     const previousValues = snap.before.data();
